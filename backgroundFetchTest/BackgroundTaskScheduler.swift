@@ -61,7 +61,7 @@ class BackgroundTaskScheduler: NSObject {
         }
 
         // サンプルの処理をキューに詰めます
-        let array = [1, 2, 3, 4, 5]
+        let array = [1/*, 2, 3, 4, 5*/]
         array.enumerated().forEach { arg in
             let (offset, value) = arg
             let operation = BackgroundOperation(id: value)

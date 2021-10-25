@@ -18,8 +18,15 @@ class BackgroundOperation: Operation {
 //        DataShare.shared.add("\(self.id)")
         print("\(Date()) this operation id is \(self.id)")
         
-        DataShare.shared.add("\(LocationManager.shared.latitude) \(LocationManager.shared.longitude)")
-        DataShare.shared.add("\(StepManager.shared.isUpdate) \(StepManager.shared.steps)")
-        StepManager.shared.isUpdate = false
+        if LocationManager.shared.isUpdate {
+            DataShare.shared.add("\(LocationManager.shared.latitude) \(LocationManager.shared.longitude)")
+            LocationManager.shared.isUpdate = false
+        }
+
+        if StepManager.shared.isUpdate {
+            DataShare.shared.add("\(StepManager.shared.isUpdate) \(StepManager.shared.steps)")
+            StepManager.shared.steps = 0
+            StepManager.shared.isUpdate = false
+        }
     }
 }

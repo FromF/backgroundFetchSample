@@ -24,7 +24,7 @@ class StepManager: NSObject {
             self.pedometer.startUpdates(from: Date()) { data, error in
                 if let numberOfSteps = data?.numberOfSteps,
                    let steps = numberOfSteps as? Int {
-                    self.steps += steps
+                    self.steps = steps
                     self.isUpdate = true
                 }
             }

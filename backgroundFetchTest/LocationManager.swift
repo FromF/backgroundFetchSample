@@ -15,6 +15,7 @@ class LocationManager: NSObject {
     var latitude: CLLocationDegrees = 0
     /// 経度
     var longitude: CLLocationDegrees = 0
+    var isUpdate: Bool = false
 
     private let locationManager = CLLocationManager()
     private var status: CLAuthorizationStatus {
@@ -48,6 +49,7 @@ extension LocationManager: CLLocationManagerDelegate {
         if let location = locations.first {
             latitude = location.coordinate.latitude
             longitude = location.coordinate.longitude
+            isUpdate = true
         }
     }
 }
