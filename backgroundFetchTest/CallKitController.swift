@@ -9,6 +9,8 @@ import UIKit
 import CallKit
 
 class CallKitController: NSObject, ObservableObject {
+    static let shared = CallKitController()
+
     @Published var status: String = "unknown"
     
     var callObserver = CXCallObserver()
@@ -16,7 +18,7 @@ class CallKitController: NSObject, ObservableObject {
     override init() {
         super.init()
         callObserver.setDelegate(self, queue: DispatchQueue.main)
-        print("コールキットオブザーバーinit")
+        debugLog("")
     }
 }
 
@@ -26,27 +28,28 @@ extension CallKitController: CXCallObserverDelegate {
     }
     
     func callStateValue(call: CXCall)  {
-        print("通知があったよ！")
-        print("isOutgoing   ", call.isOutgoing);
-        print("hasConnected ", call.hasConnected);
-        print("hasEnded     ", call.hasEnded);
-        print("isOnHold     ", call.isOnHold);
+        status = "unknown"
+        
+        debugLog("isOutgoing   \(call.isOutgoing)");
+        debugLog("hasConnected \(call.hasConnected)");
+        debugLog("hasEnded     \(call.hasEnded)");
+        debugLog("isOnHold     \(call.isOnHold)");
         
         // 発信
         if (call.isOutgoing == true && call.hasConnected == false) {
-            print("発信　CXCallState : Dialing");
+            debugLog("発信　CXCallState : Dialing");
             status = "Dialing"
         }
 
         // 着信
         if (call.hasConnected == false && call.hasEnded == false) {
-            print("着信　CXCallState : Incoming");
+            debugLog("着信　CXCallState : Incoming");
             status = "Incoming"
         }
 
         // 受話
         if (call.hasConnected == true && call.hasEnded == false) {
-            print("受話　CXCallState : Connected");
+            debugLog("受話　CXCallState : Connected");
             // Notification通知を送る（通知を送りたい箇所に書く。例えば何らかのボタンを押した際の処理の中等）
             NotificationCenter.default.post(name: Notification.Name("myNotificationName"),
                                             object: nil)
@@ -55,7 +58,7 @@ extension CallKitController: CXCallObserverDelegate {
 
         // 切断
         if (call.hasConnected == true && call.hasEnded == true) {
-            print("切断　CXCallState : Disconnected");
+            debugLog("切断　CXCallState : Disconnected");
             status = "Disconnected"
         }
     }

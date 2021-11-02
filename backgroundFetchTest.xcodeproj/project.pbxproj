@@ -17,6 +17,9 @@
 		9D5E16E8273142F00028F94C /* BackgroundTaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E16E7273142F00028F94C /* BackgroundTaskListView.swift */; };
 		9D5E16EA273143660028F94C /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E16E9273143660028F94C /* StatusView.swift */; };
 		9D5E16EC273148C80028F94C /* CallKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E16EB273148C80028F94C /* CallKitController.swift */; };
+		9D5E16EE273169E10028F94C /* BatteryMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E16ED273169E10028F94C /* BatteryMonitor.swift */; };
+		9D5E16F027316C200028F94C /* MusicMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E16EF27316C200028F94C /* MusicMonitor.swift */; };
+		9D5E16F2273174FF0028F94C /* debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E16F1273174FF0028F94C /* debug.swift */; };
 		9D9D92CA27253EEE00A1B021 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D92C927253EEE00A1B021 /* LocationManager.swift */; };
 		9D9D92CC2725659200A1B021 /* StepManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D92CB2725659200A1B021 /* StepManager.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +37,9 @@
 		9D5E16E7273142F00028F94C /* BackgroundTaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTaskListView.swift; sourceTree = "<group>"; };
 		9D5E16E9273143660028F94C /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 		9D5E16EB273148C80028F94C /* CallKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallKitController.swift; sourceTree = "<group>"; };
+		9D5E16ED273169E10028F94C /* BatteryMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryMonitor.swift; sourceTree = "<group>"; };
+		9D5E16EF27316C200028F94C /* MusicMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMonitor.swift; sourceTree = "<group>"; };
+		9D5E16F1273174FF0028F94C /* debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = debug.swift; sourceTree = "<group>"; };
 		9D9D92C927253EEE00A1B021 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9D9D92CB2725659200A1B021 /* StepManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				9D3D820B2723DB180011C73D /* Info.plist */,
+				9D5E16F1273174FF0028F94C /* debug.swift */,
 				9D3D81FB2723D5460011C73D /* backgroundFetchTestApp.swift */,
 				9D3D81FD2723D5460011C73D /* ContentView.swift */,
 				9D5E16E9273143660028F94C /* StatusView.swift */,
@@ -76,8 +83,10 @@
 				9D3D820E2723EA670011C73D /* BackgroundTaskScheduler.swift */,
 				9D3D82092723D8060011C73D /* BackgroundOperation.swift */,
 				9D9D92C927253EEE00A1B021 /* LocationManager.swift */,
-				9D5E16EB273148C80028F94C /* CallKitController.swift */,
 				9D9D92CB2725659200A1B021 /* StepManager.swift */,
+				9D5E16EB273148C80028F94C /* CallKitController.swift */,
+				9D5E16ED273169E10028F94C /* BatteryMonitor.swift */,
+				9D5E16EF27316C200028F94C /* MusicMonitor.swift */,
 				9D3D820C2723E1430011C73D /* DataShare.swift */,
 				9D3D81FF2723D5490011C73D /* Assets.xcassets */,
 				9D3D82012723D5490011C73D /* Preview Content */,
@@ -165,6 +174,9 @@
 			files = (
 				9D3D820A2723D8070011C73D /* BackgroundOperation.swift in Sources */,
 				9D5E16E8273142F00028F94C /* BackgroundTaskListView.swift in Sources */,
+				9D5E16F027316C200028F94C /* MusicMonitor.swift in Sources */,
+				9D5E16EE273169E10028F94C /* BatteryMonitor.swift in Sources */,
+				9D5E16F2273174FF0028F94C /* debug.swift in Sources */,
 				9D5E16EC273148C80028F94C /* CallKitController.swift in Sources */,
 				9D5E16EA273143660028F94C /* StatusView.swift in Sources */,
 				9D3D81FE2723D5460011C73D /* ContentView.swift in Sources */,

@@ -22,9 +22,9 @@ class BackgroundTaskScheduler: NSObject {
         BGTaskScheduler.shared.register(forTaskWithIdentifier: apprefreshIdentifier, using: nil) { task in
             // バックグラウンド処理したい内容 ※後述します
             self.handleAppRefresh(task: task as! BGAppRefreshTask)
-            print("\(Date()) call handleAppRefresh")
+            debugLog("call handleAppRefresh")
         }
-        print("\(Date()) registAppRefresh")
+        debugLog("registAppRefresh")
     }
 
     /// リフレッシュ処理タスクの予約
@@ -39,11 +39,11 @@ class BackgroundTaskScheduler: NSObject {
         do {
             // スケジューラーに実行リクエストを登録
             try BGTaskScheduler.shared.submit(request)
-            print("\(Date()) scheduled")
+            debugLog("scheduled")
             
             LocationManager.shared.start()
         } catch {
-            print("Could not schedule app refresh: \(error)")
+            errorLog("Could not schedule app refresh: \(error)")
         }
     }
 

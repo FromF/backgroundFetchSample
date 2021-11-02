@@ -20,6 +20,6 @@ class DataShare: NSObject {
         let dateString = dateFormatter.string(from: Date())
 
         array.append("\(dateString) \(text)")
-        print("add:\(dateString) \(text)")
+        debugLog("add:\(dateString) \(text)")
     }
 }

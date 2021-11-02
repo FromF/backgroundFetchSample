@@ -8,18 +8,18 @@
 import UIKit
 import CoreLocation
 
-class LocationManager: NSObject {
+class LocationManager: NSObject , ObservableObject {
     static let shared = LocationManager()
 
     /// 緯度
-    var latitude: CLLocationDegrees = 0
+    @Published var latitude: CLLocationDegrees = 0
     /// 経度
-    var longitude: CLLocationDegrees = 0
+    @Published var longitude: CLLocationDegrees = 0
     var isUpdate: Bool = false
 
     private let locationManager = CLLocationManager()
     private var status: CLAuthorizationStatus {
-        print("\(locationManager.authorizationStatus.rawValue)")
+        debugLog("\(locationManager.authorizationStatus.rawValue)")
         return locationManager.authorizationStatus
     }
     

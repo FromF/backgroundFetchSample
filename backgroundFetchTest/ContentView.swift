@@ -29,6 +29,8 @@ struct ContentView: View {
         .onAppear {
             let _ = StepManager.shared
             let _ = LocationManager.shared
+            BatteryMonitor.shared.start()
+            MusicMonitor.shared.start()
         }
     }
 }

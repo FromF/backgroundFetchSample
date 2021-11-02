@@ -27,11 +27,11 @@ struct backgroundFetchTestApp: App {
                 .onChange(of: scenePhase) { scene in
                     switch scene {
                     case .active:
-                        print("\(Date()) scenePhase: active")
+                        debugLog("scenePhase: active")
                     case .inactive:
-                        print("\(Date()) scenePhase: inactive")
+                        debugLog("scenePhase: inactive")
                     case .background:
-                        print("\(Date()) scenePhase: background")
+                        debugLog("scenePhase: background")
                         BackgroundTaskScheduler.shared.scheduleAppRefresh()
                     @unknown default: break
                     }

@@ -9,12 +9,15 @@ import SwiftUI
 import MediaPlayer
 
 struct StatusView: View {
-    @ObservedObject private var callKitController = CallKitController()
-    @State private var location: String = ""
-    @State private var stepCount: String = ""
+    @ObservedObject private var callKit = CallKitController.shared
+    @ObservedObject private var music = MusicMonitor.shared
+    @ObservedObject private var battery = BatteryMonitor.shared
+    @ObservedObject private var step = StepManager.shared
+    @ObservedObject private var location = LocationManager.shared
+
+    
+    
     @State private var systemUptime: String = ""
-    @State private var batteryState: String = ""
-    @State private var mediaState: String = ""
     @State private var lastSystemUptime: TimeInterval = 0
     
     var body: some View {
@@ -22,11 +25,11 @@ struct StatusView: View {
             List() {
                 HStack {
                     Text("位置情報:")
-                    Text("\(location)")
+                    Text("\(location.latitude) , \(location.longitude)")
                 }
                 HStack {
                     Text("歩数:")
-                    Text("\(stepCount)")
+                    Text("\(step.steps)")
                 }
                 HStack {
                     Text("スマホのON/OFF:")
@@ -34,15 +37,15 @@ struct StatusView: View {
                 }
                 HStack {
                     Text("充電の有無:")
-                    Text("\(batteryState)")
+                    Text(battery.status)
                 }
                 HStack {
                     Text("音楽などのメディア再生中:")
-                    Text("\(mediaState)")
+                    Text(music.status)
                 }
                 HStack {
                     Text("通話状態:")
-                    Text("\(callKitController.status)")
+                    Text(callKit.status)
                 }
             }
             Button(action: {
@@ -60,12 +63,6 @@ struct StatusView: View {
         let nowSystemUptime = ProcessInfo.processInfo.systemUptime
         systemUptime =  "\(nowSystemUptime - lastSystemUptime)"
         lastSystemUptime = nowSystemUptime
-
-        location = "\(LocationManager.shared.latitude) , \(LocationManager.shared.longitude)"
-        stepCount = "\(StepManager.shared.steps)"
-        batteryState =  UIDevice().batteryState ==
-            .charging ? "充電中" : "非充電"
-        mediaState = MPMusicPlayerController.systemMusicPlayer.playbackState == .playing ? "再生中" : "停止"
     }
 }
 

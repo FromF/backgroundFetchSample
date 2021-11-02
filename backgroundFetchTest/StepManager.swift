@@ -9,10 +9,10 @@ import UIKit
 import CoreMotion
 import SwiftUI
 
-class StepManager: NSObject {
+class StepManager: NSObject , ObservableObject {
     static let shared = StepManager()
     
-    var steps: Int = 0
+    @Published var steps: Int = 0
     var isUpdate: Bool = false
     
     private let pedometer = CMPedometer()

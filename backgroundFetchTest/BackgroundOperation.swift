@@ -16,7 +16,7 @@ class BackgroundOperation: Operation {
 
     override func main() {
 //        DataShare.shared.add("\(self.id)")
-        print("\(Date()) this operation id is \(self.id)")
+        debugLog("\(Date()) this operation id is \(self.id)")
         
         if LocationManager.shared.isUpdate {
             DataShare.shared.add("\(LocationManager.shared.latitude) \(LocationManager.shared.longitude)")
