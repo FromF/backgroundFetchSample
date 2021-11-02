@@ -11,22 +11,24 @@ struct ContentView: View {
     @State private var list: [String] = []
     
     var body: some View {
-        VStack {
-            List(list, id: \.self) { text in
-                Text("\(text)")
-                    .padding()
-            }
-            Button(action: {
-                
-                list = DataShare.shared.array
-                
-            }) {
-                Text("Reload")
-            }
+        TabView {
+            StatusView()
+                .padding(.bottom)
+                .tabItem {
+                    Text("ステータス")
+                }
+                .tag(0)
+            
+            BackgroundTaskListView()
+                .padding(.bottom)
+                .tabItem {
+                    Text("バックグラウンドログ")
+                }
+                .tag(1)
         }
         .onAppear {
-            let _ = LocationManager.shared
             let _ = StepManager.shared
+            let _ = LocationManager.shared
         }
     }
 }

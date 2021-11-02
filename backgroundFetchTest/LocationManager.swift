@@ -25,13 +25,20 @@ class LocationManager: NSObject {
     
     override init() {
         super.init()
-        
-        locationManager.requestAlwaysAuthorization()
+        locationManager.delegate = self
+        authorization()
+    }
+    
+    func authorization() {
+        if status == .restricted || status == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        } else if status == .authorizedWhenInUse {
+            locationManager.requestAlwaysAuthorization()
+        }
     }
     
     func start() {
         if status == .authorizedAlways {
-            locationManager.delegate = self
             locationManager.distanceFilter = 100
             locationManager.startUpdatingLocation()
         }
@@ -45,6 +52,9 @@ class LocationManager: NSObject {
 
 
 extension LocationManager: CLLocationManagerDelegate {
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        authorization()
+    }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             latitude = location.coordinate.latitude
