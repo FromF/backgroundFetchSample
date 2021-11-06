@@ -28,18 +28,22 @@ class BatteryMonitor: NSObject , ObservableObject {
         status = "不明"
     }
     
-    @objc private func batteryStateChanged() {
+    func current() -> String {
         switch UIDevice.current.batteryState {
         case .unknown:
-            status = "不明"
+            return "不明"
         case .unplugged:
-            status = "非充電"
+            return "非充電"
         case .charging:
-            status = "充電中"
+            return "充電中"
         case .full:
-            status = "充電完了"
+            return "充電完了"
         @unknown default:
-            status = "不明"
+            return "不明"
         }
+    }
+    
+    @objc private func batteryStateChanged() {
+        status = current()
     }
 }

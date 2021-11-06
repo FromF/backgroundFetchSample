@@ -28,24 +28,27 @@ class MusicMonitor: NSObject , ObservableObject {
         status = "不明"
     }
     
-    @objc private func musicStateChanged() {
-        debugLog("\(MPMusicPlayerController.systemMusicPlayer.playbackState.rawValue)")
+    func current() -> String {
         switch MPMusicPlayerController.systemMusicPlayer.playbackState {
         case .stopped:
-            status = "停止中"
+            return "停止中"
         case .playing:
-            status = "再生中"
+            return "再生中"
         case .paused:
-            status = "一時停止"
+            return "一時停止"
         case .interrupted:
-            status = "中断"
+            return "中断"
         case .seekingForward:
-            status = "早送り"
+            return "早送り"
         case .seekingBackward:
-            status = "巻き戻し"
+            return "巻き戻し"
         @unknown default:
-            status = "不明"
+            return "不明"
         }
+    }
+    
+    @objc private func musicStateChanged() {
+        status = current()
     }
     
 }
