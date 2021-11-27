@@ -9,7 +9,6 @@ import UIKit
 
 class BackgroundOperation: Operation {
     let id: Int
-    private var lastSteps  = 0
     init(id: Int) {
         self.id = id
     }
@@ -18,21 +17,23 @@ class BackgroundOperation: Operation {
 //        DataShare.shared.add("\(self.id)")
         debugLog("\(Date()) this operation id is \(self.id)")
         
-        var gps = ""
+        var gps = "none"
+        var speed = "none"
         if LocationManager.shared.isUpdate {
             gps = "\(LocationManager.shared.latitude) \(LocationManager.shared.longitude)"
+            speed = "\(LocationManager.shared.speed)"
             LocationManager.shared.isUpdate = false
         }
 
-        var steps = ""
+        var steps = "none"
         if StepManager.shared.isUpdate {
-            steps = "\(StepManager.shared.steps - lastSteps)"
-            lastSteps = StepManager.shared.steps
+            steps = "\(StepManager.shared.steps)"
             StepManager.shared.isUpdate = false
         }
         
         DataShare.shared.post(kind: "fetch",
                               gps: gps,
+                              speed: speed,
                               steps: steps,
                               call: "\(CallKitController.shared.status)",
                               charge: "\(BatteryMonitor.shared.current())",

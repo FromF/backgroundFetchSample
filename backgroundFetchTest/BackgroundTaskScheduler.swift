@@ -25,7 +25,6 @@ class BackgroundTaskScheduler: NSObject {
             debugLog("call handleAppRefresh")
         }
         debugLog("registAppRefresh")
-        DataShare.shared.post(kind: "Task regist")
     }
 
     /// リフレッシュ処理タスクの予約
@@ -41,8 +40,6 @@ class BackgroundTaskScheduler: NSObject {
             // スケジューラーに実行リクエストを登録
             try BGTaskScheduler.shared.submit(request)
             debugLog("scheduled")
-            DataShare.shared.post(kind: "Task scheduled")
-
             LocationManager.shared.start()
         } catch {
             errorLog("Could not schedule app refresh: \(error)")

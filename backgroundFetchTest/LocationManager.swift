@@ -15,6 +15,8 @@ class LocationManager: NSObject , ObservableObject {
     @Published var latitude: CLLocationDegrees = 0
     /// 経度
     @Published var longitude: CLLocationDegrees = 0
+    /// 速度
+    @Published var speed: CLLocationSpeed = 0
     var isUpdate: Bool = false
 
     private let locationManager = CLLocationManager()
@@ -26,6 +28,11 @@ class LocationManager: NSObject , ObservableObject {
     override init() {
         super.init()
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        //バックグランド中に位置情報を取得するか
+        locationManager.allowsBackgroundLocationUpdates = true
+        //システムが場所の更新を一時停止できるかどうか
+        locationManager.pausesLocationUpdatesAutomatically = false
         authorization()
     }
     
@@ -33,6 +40,7 @@ class LocationManager: NSObject , ObservableObject {
         if status == .restricted || status == .notDetermined {
             locationManager.requestWhenInUseAuthorization()
         } else if status == .authorizedWhenInUse {
+            // バックグラウンドで場所へのアクセスを許可
             locationManager.requestAlwaysAuthorization()
         }
     }
@@ -59,7 +67,32 @@ extension LocationManager: CLLocationManagerDelegate {
         if let location = locations.first {
             latitude = location.coordinate.latitude
             longitude = location.coordinate.longitude
+            speed = location.speed
             isUpdate = true
         }
+        
+        //
+        var gps = "none"
+        var speed = "none"
+        if LocationManager.shared.isUpdate {
+            gps = "\(LocationManager.shared.latitude) \(LocationManager.shared.longitude)"
+            speed = "\(LocationManager.shared.speed)"
+            LocationManager.shared.isUpdate = false
+        }
+        
+        var steps = "none"
+        if StepManager.shared.isUpdate {
+            steps = "\(StepManager.shared.steps)"
+            StepManager.shared.isUpdate = false
+        }
+        
+        DataShare.shared.post(kind: "UpdateLocations",
+                              gps: gps,
+                              speed: speed,
+                              steps: steps,
+                              call: "\(CallKitController.shared.status)",
+                              charge: "\(BatteryMonitor.shared.current())",
+                              music: "\(MusicMonitor.shared.current())",
+                              systemUpTime: "\(ProcessInfo.processInfo.systemUptime)")
     }
 }

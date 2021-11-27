@@ -26,13 +26,15 @@ class DataShare: NSObject {
         debugLog("add:\(dateString) \(text)")
     }
     
-    func post(kind: String , gps: String = "" , steps: String = "" , call: String = "", charge: String = "", music: String = "", systemUpTime: String = "") {
+    func post(kind: String , gps: String = "" , speed: String = "" , steps: String = "" , call: String = "", charge: String = "", music: String = "", systemUpTime: String = "") {
         //Googleスプレットシートのスクリプトをデプロイした後に発行されるURLを入力してください
         let url = ""
         
         let params: [String : Any] = [
+            "name" : UIDevice.current.name,
             "kind" : kind,
             "gps": gps,
+            "speed": speed,
             "steps": steps,
             "call": call,
             "charge": charge,

@@ -28,11 +28,14 @@ struct backgroundFetchTestApp: App {
                     switch scene {
                     case .active:
                         debugLog("scenePhase: active")
+                        DataShare.shared.post(kind: "active")
                     case .inactive:
                         debugLog("scenePhase: inactive")
+                        DataShare.shared.post(kind: "inactive")
                     case .background:
                         debugLog("scenePhase: background")
                         BackgroundTaskScheduler.shared.scheduleAppRefresh()
+                        DataShare.shared.post(kind: "background")
                     @unknown default: break
                     }
                 }
