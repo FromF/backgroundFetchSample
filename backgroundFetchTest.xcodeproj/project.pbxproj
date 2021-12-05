@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D10CCF12759BF62004E791C /* AudioOutputMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D10CCF02759BF62004E791C /* AudioOutputMonitor.swift */; };
 		9D3D81FC2723D5460011C73D /* backgroundFetchTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D81FB2723D5460011C73D /* backgroundFetchTestApp.swift */; };
 		9D3D81FE2723D5460011C73D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D81FD2723D5460011C73D /* ContentView.swift */; };
 		9D3D82002723D5490011C73D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D3D81FF2723D5490011C73D /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D10CCF02759BF62004E791C /* AudioOutputMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioOutputMonitor.swift; sourceTree = "<group>"; };
 		9D3D81F82723D5460011C73D /* backgroundFetchTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = backgroundFetchTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D3D81FB2723D5460011C73D /* backgroundFetchTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = backgroundFetchTestApp.swift; sourceTree = "<group>"; };
 		9D3D81FD2723D5460011C73D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				9D5E16EB273148C80028F94C /* CallKitController.swift */,
 				9D5E16ED273169E10028F94C /* BatteryMonitor.swift */,
 				9D5E16EF27316C200028F94C /* MusicMonitor.swift */,
+				9D10CCF02759BF62004E791C /* AudioOutputMonitor.swift */,
 				9D3D820C2723E1430011C73D /* DataShare.swift */,
 				9D3D81FF2723D5490011C73D /* Assets.xcassets */,
 				9D3D82012723D5490011C73D /* Preview Content */,
@@ -178,6 +181,7 @@
 				9D5E16EE273169E10028F94C /* BatteryMonitor.swift in Sources */,
 				9D5E16F2273174FF0028F94C /* debug.swift in Sources */,
 				9D5E16EC273148C80028F94C /* CallKitController.swift in Sources */,
+				9D10CCF12759BF62004E791C /* AudioOutputMonitor.swift in Sources */,
 				9D5E16EA273143660028F94C /* StatusView.swift in Sources */,
 				9D3D81FE2723D5460011C73D /* ContentView.swift in Sources */,
 				9D9D92CA27253EEE00A1B021 /* LocationManager.swift in Sources */,

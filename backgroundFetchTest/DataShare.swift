@@ -26,7 +26,7 @@ class DataShare: NSObject {
         debugLog("add:\(dateString) \(text)")
     }
     
-    func post(kind: String , gps: String = "" , speed: String = "" , steps: String = "" , call: String = "", charge: String = "", music: String = "", systemUpTime: String = "") {
+    func post(kind: String , gps: String = "" , speed: String = "" , steps: String = "" , call: String = "", charge: String = "", music: String = "", systemUpTime: String = "" , audio: String = "") {
         //Googleスプレットシートのスクリプトをデプロイした後に発行されるURLを入力してください
         let url = ""
         
@@ -40,6 +40,7 @@ class DataShare: NSObject {
             "charge": charge,
             "music": music,
             "systemUpTime": systemUpTime,
+            "audio": audio,
         ]
         guard let body = try? JSONSerialization.data(withJSONObject: params, options: []) else { return }
 

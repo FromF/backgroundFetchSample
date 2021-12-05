@@ -93,6 +93,7 @@ extension LocationManager: CLLocationManagerDelegate {
                               call: "\(CallKitController.shared.status)",
                               charge: "\(BatteryMonitor.shared.current())",
                               music: "\(MusicMonitor.shared.current())",
-                              systemUpTime: "\(ProcessInfo.processInfo.systemUptime)")
+                              systemUpTime: "\(ProcessInfo.processInfo.systemUptime)",
+                              audio: "\(AudioOutputMonitor.shared.audioOutput)")
     }
 }

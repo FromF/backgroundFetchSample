@@ -14,6 +14,7 @@ struct StatusView: View {
     @ObservedObject private var battery = BatteryMonitor.shared
     @ObservedObject private var step = StepManager.shared
     @ObservedObject private var location = LocationManager.shared
+    @ObservedObject private var audio = AudioOutputMonitor.shared
 
     
     
@@ -46,6 +47,10 @@ struct StatusView: View {
                 HStack {
                     Text("通話状態:")
                     Text(callKit.status)
+                }
+                HStack {
+                    Text("オーディオ出力:")
+                    Text(audio.audioOutputDevice.toString())
                 }
             }
             Button(action: {
