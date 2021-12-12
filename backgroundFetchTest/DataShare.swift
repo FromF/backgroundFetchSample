@@ -11,6 +11,7 @@ class DataShare: NSObject {
     static let shared = DataShare()
     
     private (set) public var array: [String] = []
+    private var lastDate: Date?
     
     // URLSessionのバックグラウンド実行用の識別子
     private let identifier: String = "DataShareOperation"
@@ -27,6 +28,21 @@ class DataShare: NSObject {
     }
     
     func post(kind: String , gps: String = "" , speed: String = "" , steps: String = "" , call: String = "", charge: String = "", music: String = "", systemUpTime: String = "" , audio: String = "") {
+        
+        if kind == "UpdateLocations" {
+            if let lastDate = lastDate {
+                let retInterval = Date().timeIntervalSince(lastDate)
+                
+                if retInterval < 1 {
+                    errorLog("skip")
+                    return
+                }
+            }
+            lastDate = Date()
+        } else {
+            lastDate = nil
+        }
+        
         //Googleスプレットシートのスクリプトをデプロイした後に発行されるURLを入力してください
         let url = ""
         
@@ -52,7 +68,7 @@ class DataShare: NSObject {
         urlRequest.httpBody = body
         
         // バックグラウンド用セッションの作成
-        let configuration = URLSessionConfiguration.background(withIdentifier: identifier)
+        let configuration = URLSessionConfiguration.background(withIdentifier: "\(identifier)\(Int.random(in: 0...100000))")
         // OSのタイミングに任せない(false)
         configuration.isDiscretionary = false
 
