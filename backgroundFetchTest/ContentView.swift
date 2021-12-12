@@ -27,10 +27,12 @@ struct ContentView: View {
                 .tag(1)
         }
         .onAppear {
-            let _ = StepManager.shared
-            let _ = LocationManager.shared
-            BatteryMonitor.shared.start()
-            MusicMonitor.shared.start()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                let _ = StepManager.shared
+                let _ = LocationManager.shared
+                BatteryMonitor.shared.start()
+                MusicMonitor.shared.start()
+            }
         }
     }
 }
