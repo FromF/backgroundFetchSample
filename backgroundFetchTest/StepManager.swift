@@ -12,8 +12,6 @@ import SwiftUI
 class StepManager: NSObject , ObservableObject {
     static let shared = StepManager()
     
-    private var lastSteps  = 0
-    
     @Published var steps: Int = 0
     var isUpdate: Bool = false
     
@@ -26,11 +24,8 @@ class StepManager: NSObject , ObservableObject {
             self.pedometer.startUpdates(from: Date()) { data, error in
                 if let numberOfSteps = data?.numberOfSteps,
                    let steps = numberOfSteps as? Int {
-                    self.steps = steps - self.lastSteps
-                    if self.isUpdate == false {
-                        self.lastSteps = steps
-                        self.isUpdate = true
-                    }
+                    self.steps = steps
+                    self.isUpdate = true
                 }
             }
         }
