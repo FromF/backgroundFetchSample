@@ -76,3 +76,5 @@ curlコマンド例
 curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"kind":"GPS","body":"35.4231362 , 139.5987453"}' [URL]
 ```
 
+## 参考サイト
+- [iOSアプリからスプレッドシートにデータを書き込む](https://qiita.com/kensuzuk/items/efbfaed719932822f207)
